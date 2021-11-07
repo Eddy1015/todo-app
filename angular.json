@@ -9,7 +9,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/to-do-list",
             "index": "apps/to-do-list/src/index.html",
@@ -21,7 +23,9 @@
               "apps/to-do-list/src/favicon.ico",
               "apps/to-do-list/src/assets"
             ],
-            "styles": ["apps/to-do-list/src/styles.scss"],
+            "styles": [
+              "apps/to-do-list/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,7 +90,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/to-do-list"],
+          "outputs": [
+            "coverage/apps/to-do-list"
+          ],
           "options": {
             "jestConfig": "apps/to-do-list/jest.config.js",
             "passWithNoTests": true
@@ -94,6 +100,55 @@
         }
       },
       "tags": []
+    },
+    "to-do-list-domain": {
+      "projectType": "library",
+      "root": "libs/to-do-list/domain",
+      "sourceRoot": "libs/to-do-list/domain/src",
+      "prefix": "to-do-list",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": [
+            "dist/libs/to-do-list/domain"
+          ],
+          "options": {
+            "project": "libs/to-do-list/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/to-do-list/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/to-do-list/domain/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/to-do-list/domain"
+          ],
+          "options": {
+            "jestConfig": "libs/to-do-list/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/to-do-list/domain/src/**/*.ts",
+              "libs/to-do-list/domain/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "domain:to-do-list",
+        "type:domain-logic"
+      ]
     },
     "to-do-list-e2e": {
       "root": "apps/to-do-list-e2e",
@@ -115,14 +170,20 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/to-do-list-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/to-do-list-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["to-do-list"]
+      "implicitDependencies": [
+        "to-do-list"
+      ]
     }
   }
 }
