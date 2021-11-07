@@ -1,10 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ToDoListDomainModule } from '@to-do-list-app/to-do-list/domain';
-import { ListComponent } from './list.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ToDoListDomainModule} from '@to-do-list-app/to-do-list/domain';
+import {ListComponent} from './list.component';
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
-  imports: [CommonModule, ToDoListDomainModule],
+  imports: [
+    CommonModule,
+    ToDoListDomainModule,
+    EffectsModule.forRoot()
+  ],
   declarations: [
     ListComponent
   ],
@@ -12,4 +17,5 @@ import { ListComponent } from './list.component';
     ListComponent
   ],
 })
-export class ToDoListFeatureListModule {}
+export class ToDoListFeatureListModule {
+}

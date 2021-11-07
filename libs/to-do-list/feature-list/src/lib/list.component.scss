@@ -1,4 +1,10 @@
-.table td {
-  border: 1px solid;
-  padding: 10px;
+
+.to-do-list {
+  list-style: circle;
+
+  .to-do {
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+  }
 }
