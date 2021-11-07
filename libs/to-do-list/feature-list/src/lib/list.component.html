@@ -1,0 +1,10 @@
+<h1>to-do-list-list</h1>
+
+<table class="table">
+  <tr *ngFor="let toDo of toDoList$ | async">
+    <td>{{toDo.id}}</td>
+    <td>{{toDo.name}}</td>
+    <td>{{toDo.description}}</td>
+  </tr>
+</table>
+

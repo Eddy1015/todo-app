@@ -17,6 +17,9 @@
     "paths": {
       "@to-do-list-app/to-do-list/domain": [
         "libs/to-do-list/domain/src/index.ts"
+      ],
+      "@to-do-list-app/to-do-list/feature-list": [
+        "libs/to-do-list/feature-list/src/index.ts"
       ]
     }
   },
