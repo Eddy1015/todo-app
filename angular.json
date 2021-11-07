@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "projects": {
+    "to-do-list": {
+      "projectType": "application",
+      "root": "apps/to-do-list",
+      "sourceRoot": "apps/to-do-list/src",
+      "prefix": "to-do-list-app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/to-do-list",
+            "index": "apps/to-do-list/src/index.html",
+            "main": "apps/to-do-list/src/main.ts",
+            "polyfills": "apps/to-do-list/src/polyfills.ts",
+            "tsConfig": "apps/to-do-list/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/to-do-list/src/favicon.ico",
+              "apps/to-do-list/src/assets"
+            ],
+            "styles": ["apps/to-do-list/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/to-do-list/src/environments/environment.ts",
+                  "with": "apps/to-do-list/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "to-do-list:build:production"
+            },
+            "development": {
+              "browserTarget": "to-do-list:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "to-do-list:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/to-do-list/src/**/*.ts",
+              "apps/to-do-list/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/to-do-list"],
+          "options": {
+            "jestConfig": "apps/to-do-list/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "to-do-list-e2e": {
+      "root": "apps/to-do-list-e2e",
+      "sourceRoot": "apps/to-do-list-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/to-do-list-e2e/cypress.json",
+            "devServerTarget": "to-do-list:serve:development",
+            "tsConfig": "apps/to-do-list-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "to-do-list:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/to-do-list-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["to-do-list"]
+    }
+  }
+}
