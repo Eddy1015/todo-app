@@ -185,6 +185,55 @@
         "to-do-list"
       ]
     },
+    "to-do-list-feature-create": {
+      "projectType": "library",
+      "root": "libs/to-do-list/feature-create",
+      "sourceRoot": "libs/to-do-list/feature-create/src",
+      "prefix": "to-do-list",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": [
+            "dist/libs/to-do-list/feature-create"
+          ],
+          "options": {
+            "project": "libs/to-do-list/feature-create/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/to-do-list/feature-create/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/to-do-list/feature-create/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/to-do-list/feature-create"
+          ],
+          "options": {
+            "jestConfig": "libs/to-do-list/feature-create/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/to-do-list/feature-create/src/**/*.ts",
+              "libs/to-do-list/feature-create/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "domain:to-do-list",
+        "type:feature"
+      ]
+    },
     "to-do-list-feature-list": {
       "projectType": "library",
       "root": "libs/to-do-list/feature-list",

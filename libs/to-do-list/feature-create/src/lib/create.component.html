@@ -1,0 +1,4 @@
+<div class="to-do-list-create">
+  <input type="text" class="to-do-list-create-input" [formControl]="newToDo" (keyup.enter)="save(newToDo.value)">
+  <button class="to-do-list-create-save" [disabled]="!newToDo.valid" (click)="save(newToDo.value)">+</button>
+</div>

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { catchError, map, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {catchError, map, switchMap} from 'rxjs/operators';
+import {of} from 'rxjs';
 import * as ToDoActions from './to-do.actions';
-import { ToDoDataService } from '../../infrastructure/to-do.data.service';
+import {ToDoDataService} from '../../infrastructure/to-do.data.service';
 
 @Injectable()
 export class ToDoEffects {
@@ -13,18 +13,35 @@ export class ToDoEffects {
       switchMap((action) =>
         this.toDoDataService.load().pipe(
           map((toDo) =>
-            ToDoActions.loadToDoSuccess({ toDo })
+            ToDoActions.loadToDoSuccess({toDo})
           ),
           catchError((error) =>
-            of(ToDoActions.loadToDoFailure({ error }))
+            of(ToDoActions.loadToDoFailure({error}))
           )
         )
       )
     )
   );
 
- constructor(
-   private actions$: Actions,
-   private toDoDataService: ToDoDataService
-  ) { }
+  addToDo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ToDoActions.addToDo),
+      switchMap((action) =>
+        this.toDoDataService.add(action.toDoContent, action.toDoDone).pipe(
+          map((toDo) =>
+            ToDoActions.addToDoSuccess({toDo})
+          ),
+          catchError((error) =>
+            of(ToDoActions.addToDoFailure({error}))
+          )
+        )
+      )
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private toDoDataService: ToDoDataService
+  ) {
+  }
 }

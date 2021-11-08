@@ -34,6 +34,16 @@ const toDoReducer = createReducer(
   on(ToDoActions.loadToDoFailure,
     (state, { error }) => ({ ...state, error })
   ),
+  on(ToDoActions.addToDo,
+    state => ({ ...state, loaded: false, error: null })
+  ),
+  on(ToDoActions.addToDoSuccess,
+    (state, { toDo }) =>
+      toDoAdapter.upsertMany([toDo], { ...state, loaded: true })
+  ),
+  on(ToDoActions.addToDoFailure,
+    (state, { error }) => ({ ...state, error })
+  ),
 );
 
 export function reducer(state: State | undefined, action: Action) {

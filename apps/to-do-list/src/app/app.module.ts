@@ -5,12 +5,14 @@ import {AppComponent} from './app.component';
 import {ToDoListFeatureListModule} from '@to-do-list-app/to-do-list/feature-list';
 import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from "@ngrx/store";
+import {ToDoListFeatureCreateModule} from "@to-do-list-app/to-do-list/feature-create";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     ToDoListFeatureListModule,
+    ToDoListFeatureCreateModule,
     HttpClientModule,
     StoreModule.forRoot({})
   ],
