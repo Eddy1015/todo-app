@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ToDoListDomainModule } from '@to-do-list-app/to-do-list/domain';
-import { CreateComponent } from './create.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ToDoListDomainModule} from '@to-do-list-app/to-do-list/domain';
+import {CreateComponent} from './create.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-    imports: [CommonModule, ToDoListDomainModule, ReactiveFormsModule],
+  imports: [CommonModule, ToDoListDomainModule, ReactiveFormsModule],
   declarations: [
     CreateComponent
   ],
@@ -13,4 +13,5 @@ import {ReactiveFormsModule} from "@angular/forms";
     CreateComponent
   ],
 })
-export class ToDoListFeatureCreateModule {}
+export class ToDoListFeatureCreateModule {
+}

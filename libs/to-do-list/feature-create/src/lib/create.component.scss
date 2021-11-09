@@ -1,5 +1,15 @@
 .to-do-list-create {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr min-content;
+  grid-template-columns: 1fr 50px;
+  margin-top: 50px;
+
+  button {
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+  button:not([disabled]) {
+    background-color: #198754;
+  }
 }

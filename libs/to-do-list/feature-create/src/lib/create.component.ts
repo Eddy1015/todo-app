@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CreateFacade} from '@to-do-list-app/to-do-list/domain';
 import {FormControl, Validators} from "@angular/forms";
 
@@ -7,7 +7,7 @@ import {FormControl, Validators} from "@angular/forms";
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
 
   newToDo = new FormControl('', [
     Validators.required,
@@ -17,16 +17,9 @@ export class CreateComponent implements OnInit {
   constructor(private createFacade: CreateFacade) {
   }
 
-
-  ngOnInit() {
-    console.log('blub');
-  }
-
   save(content: string) {
-    console.log(content);
     this.createFacade.add(content, false);
     this.newToDo.setValue(null);
   }
-
 }
 

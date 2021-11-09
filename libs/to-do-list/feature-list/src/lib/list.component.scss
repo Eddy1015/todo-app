@@ -1,8 +1,9 @@
-
 .to-do-list {
   .to-do {
     margin: 1rem 0;
+    padding: .25rem .5rem;
     display: grid;
     grid-template-columns: 1fr min-content;
+    border-bottom: 1px solid #eeeeee;
   }
 }
