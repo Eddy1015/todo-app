@@ -15,9 +15,15 @@ export class ToDoDataService {
     return this.http.get<ToDo[]>(url, {headers});
   }
 
-  add(toDoContent: string, toDoDone: boolean): Observable<ToDo> {
+  add(content: string, done: boolean): Observable<ToDo> {
     const url = 'http://localhost:8080/api/todo';
     const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.post<ToDo>(url, {content: toDoContent, done: toDoDone}, {headers});
+    return this.http.post<ToDo>(url, {content, done}, {headers});
+  }
+
+  update(id: number, content: string, done: boolean): Observable<ToDo> {
+    const url = 'http://localhost:8080/api/todo/' + id;
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    return this.http.put<ToDo>(url, {content, done}, {headers});
   }
 }

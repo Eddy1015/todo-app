@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core';
-import { ListFacade, loadToDo } from '@to-do-list-app/to-do-list/domain';
+import {Component, OnInit} from '@angular/core';
+import {ListFacade} from '@to-do-list-app/to-do-list/domain';
 
 @Component({
   selector: 'to-do-list-list',
@@ -7,22 +7,22 @@ import { ListFacade, loadToDo } from '@to-do-list-app/to-do-list/domain';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-    
-    
-    toDoList$ = this.listFacade.toDoList$;
 
+  toDoList$ = this.listFacade.toDoList$;
 
-    constructor(private listFacade: ListFacade) {
-    }
+  constructor(private listFacade: ListFacade) {
+  }
 
-    
-    ngOnInit() {
-        this.load();
-    }
+  ngOnInit() {
+    this.load();
+  }
 
-    load(): void {
-        this.listFacade.load();
-    }
+  load(): void {
+    this.listFacade.load();
+  }
 
+  update(id: number, content: string, done: boolean): void {
+    this.listFacade.update(id, content, done);
+  }
 }
 

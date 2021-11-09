@@ -1,5 +1,5 @@
 export interface ToDo {
-    id: number;
-    content: string;
-    done: boolean;
+  id: number;
+  content: string;
+  done: boolean;
 }

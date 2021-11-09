@@ -1,10 +1,10 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { TODO_FEATURE_KEY, State, ToDoPartialState, toDoAdapter } from './to-do.reducer';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {State, TODO_FEATURE_KEY, toDoAdapter, ToDoPartialState} from './to-do.reducer';
 
 // Lookup the 'ToDo' feature state managed by NgRx
 export const getToDoState = createFeatureSelector<ToDoPartialState, State>(TODO_FEATURE_KEY);
 
-const { selectAll, selectEntities } = toDoAdapter.getSelectors();
+const {selectAll, selectEntities} = toDoAdapter.getSelectors();
 
 export const getToDoLoaded = createSelector(
   getToDoState,

@@ -10,7 +10,7 @@ export class ToDoEffects {
   loadToDo$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ToDoActions.loadToDo),
-      switchMap((action) =>
+      switchMap(() =>
         this.toDoDataService.load().pipe(
           map((toDo) =>
             ToDoActions.loadToDoSuccess({toDo})
@@ -27,12 +27,28 @@ export class ToDoEffects {
     this.actions$.pipe(
       ofType(ToDoActions.addToDo),
       switchMap((action) =>
-        this.toDoDataService.add(action.toDoContent, action.toDoDone).pipe(
+        this.toDoDataService.add(action.content, action.done).pipe(
           map((toDo) =>
             ToDoActions.addToDoSuccess({toDo})
           ),
           catchError((error) =>
             of(ToDoActions.addToDoFailure({error}))
+          )
+        )
+      )
+    )
+  );
+
+  updateToDo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ToDoActions.updateToDo),
+      switchMap((action) =>
+        this.toDoDataService.update(action.toDo.id, action.toDo.content, action.toDo.done).pipe(
+          map((toDo) =>
+            ToDoActions.updateToDoSuccess({toDo})
+          ),
+          catchError((error) =>
+            of(ToDoActions.updateToDoFailure({error}))
           )
         )
       )

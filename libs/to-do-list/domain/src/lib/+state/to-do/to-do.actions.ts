@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
-import { ToDo } from '../../entities/to-do';
+import {createAction, props} from '@ngrx/store';
+import {ToDo} from '../../entities/to-do';
 
 export const loadToDo = createAction(
   '[ToDo] Load ToDo'
@@ -17,7 +17,7 @@ export const loadToDoFailure = createAction(
 
 export const addToDo = createAction(
   '[ToDo] Add ToDo',
-  props<{ toDoContent: string, toDoDone: boolean }>()
+  props<{ content: string, done: boolean }>()
 );
 
 export const addToDoSuccess = createAction(
@@ -27,5 +27,20 @@ export const addToDoSuccess = createAction(
 
 export const addToDoFailure = createAction(
   '[ToDo] Add ToDo Failure',
+  props<{ error: any }>()
+);
+
+export const updateToDo = createAction(
+  '[ToDo] Update ToDo',
+  props<{ toDo: ToDo }>()
+);
+
+export const updateToDoSuccess = createAction(
+  '[ToDo] Update ToDo Success',
+  props<{ toDo: ToDo }>()
+);
+
+export const updateToDoFailure = createAction(
+  '[ToDo] Update ToDo Failure',
   props<{ error: any }>()
 );
