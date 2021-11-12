@@ -2,6 +2,12 @@
   <h1>Welcome to {{ title }}!</h1>
 </header>
 <main>
+  <button class="btn btn-default" (click)="login()">
+    Login
+  </button>
+  <button class="btn btn-default" (click)="logoff()">
+    Logout
+  </button>
   <h2>ToDos:</h2>
   <to-do-list-list></to-do-list-list>
   <to-do-list-create></to-do-list-create>

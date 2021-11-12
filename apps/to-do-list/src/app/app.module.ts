@@ -6,6 +6,7 @@ import {ToDoListFeatureListModule} from '@to-do-list-app/to-do-list/feature-list
 import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from "@ngrx/store";
 import {ToDoListFeatureCreateModule} from "@to-do-list-app/to-do-list/feature-create";
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +15,14 @@ import {ToDoListFeatureCreateModule} from "@to-do-list-app/to-do-list/feature-cr
     ToDoListFeatureListModule,
     ToDoListFeatureCreateModule,
     HttpClientModule,
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: ['http://localhost:8080/api', 'http://localhost:8090/api', 'http://localhost:4200/api'],
+        sendAccessToken: true
+      }
+    })
+
   ],
   providers: [],
   bootstrap: [AppComponent],
