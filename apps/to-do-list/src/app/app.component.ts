@@ -11,7 +11,13 @@ export class AppComponent {
 
   constructor(private oauthService: OAuthService) {
     this.configure();
+    this.oauthService.events.subscribe(e => {
+      if (e.type === 'token_refreshed') {
+        location.reload();
+      }
+    });
   }
+
   authConfig: AuthConfig = {
     issuer: 'http://localhost:8090/auth/realms/dev',
     redirectUri: window.location.origin,
