@@ -20,3 +20,9 @@ Also using the pattern by [Manfred Steyer's DDD](https://github.com/manfredsteye
   ```shell
   nx run to-do-list:serve:development
   ```
+
+## Screenshots:
+
+![logged-out](screens/logged-out.png)
+![keycloak-login](screens/keycloak-login.png)
+![logged-in](screens/logged-in.png)
