@@ -12,11 +12,8 @@ export class AppComponent {
 
   constructor(private oauthService: OAuthService) {
     this.configure();
-    this.loggedIn = this.oauthService.hasValidAccessToken() && this.oauthService.hasValidIdToken();
     this.oauthService.events.subscribe(e => {
-      if (e.type === 'token_refreshed') {
-        location.reload();
-      }
+      this.loggedIn = this.oauthService.hasValidAccessToken() && this.oauthService.hasValidIdToken();
     });
   }
 
