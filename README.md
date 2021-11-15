@@ -1,6 +1,11 @@
+# todo-app
 
+Repositories:
 
-# ToDoListApp
+- https://github.com/Eddy1015/todo-app
+- https://github.com/Eddy1015/todo-api
+
+---
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -8,6 +13,10 @@ Also using the pattern by [Manfred Steyer's DDD](https://github.com/manfredsteye
 
 ## Start Dev Server
 
-```shell
-nx run to-do-list:serve:development
-```
+- Start the [resource and authentication server (https://github.com/Eddy1015/todo-app)](https://github.com/Eddy1015/todo-api)
+
+
+- Start development server
+  ```shell
+  nx run to-do-list:serve:development
+  ```
