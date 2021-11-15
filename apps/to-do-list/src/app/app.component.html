@@ -4,8 +4,13 @@
     {{loggedIn ? 'logout' : 'login'}}
   </button>
 </header>
-<main *ngIf="loggedIn">
-  <h2>ToDos:</h2>
-  <to-do-list-list></to-do-list-list>
-  <to-do-list-create></to-do-list-create>
+<main>
+  <div *ngIf="!loggedIn">
+    <h2>Please login.</h2>
+  </div>
+  <div *ngIf="loggedIn">
+    <h2>ToDos:</h2>
+    <to-do-list-list></to-do-list-list>
+    <to-do-list-create></to-do-list-create>
+  </div>
 </main>
