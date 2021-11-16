@@ -54,6 +54,20 @@ const toDoReducer = createReducer(
   on(ToDoActions.updateToDoFailure,
     (state, {error}) => ({...state, error})
   ),
+  on(ToDoActions.deleteToDo,
+    state => ({...state, loaded: false, error: null})
+  ),
+  on(ToDoActions.deleteToDoSuccess,
+    (state, {id, success}) => {
+      if (success) {
+        return toDoAdapter.removeOne(id, {...state, loaded: true});
+      }
+      return {...state, loaded: true};
+    }
+  ),
+  on(ToDoActions.deleteToDoFailure,
+    (state, {error}) => ({...state, error})
+  ),
 );
 
 export function reducer(state: State | undefined, action: Action) {

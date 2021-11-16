@@ -26,4 +26,10 @@ export class ToDoDataService {
     const headers = new HttpHeaders().set('Accept', 'application/json');
     return this.http.put<ToDo>(url, {content, done}, {headers});
   }
+
+  delete(id: number): Observable<boolean> {
+    const url = 'http://localhost:8080/api/todo/' + id;
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    return this.http.delete<boolean>(url, {headers});
+  }
 }

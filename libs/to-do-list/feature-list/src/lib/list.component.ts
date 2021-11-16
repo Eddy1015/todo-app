@@ -24,5 +24,9 @@ export class ListComponent implements OnInit {
   update(id: number, content: string, done: boolean): void {
     this.listFacade.update(id, content, done);
   }
+
+  delete(id: number) {
+    this.listFacade.delete(id);
+  }
 }
 

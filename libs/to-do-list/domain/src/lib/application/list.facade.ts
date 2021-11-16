@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 
-import {loadToDo, updateToDo} from '../+state/to-do/to-do.actions';
+import {deleteToDo, loadToDo, updateToDo} from '../+state/to-do/to-do.actions';
 import * as fromToDo from '../+state/to-do/to-do.reducer';
 import * as ToDoSelectors from '../+state/to-do/to-do.selectors';
 
@@ -20,5 +20,9 @@ export class ListFacade {
 
   update(id: number, content: string, done: boolean): void {
     this.store.dispatch(updateToDo({toDo: {id, content, done}}));
+  }
+
+  delete(id: number): void {
+    this.store.dispatch(deleteToDo({id: id}));
   }
 }

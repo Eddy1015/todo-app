@@ -1,9 +1,38 @@
+@mixin card-shadow {
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%),
+  0 1px 1px 0 rgb(0 0 0 / 14%),
+  0 1px 3px 0 rgb(0 0 0 / 12%);
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .to-do-list {
   .to-do {
     margin: 1rem 0;
     padding: .25rem .5rem;
     display: grid;
-    grid-template-columns: 1fr min-content;
-    border-bottom: 1px solid #eeeeee;
+    grid-template-columns: 1fr min-content min-content;
+    grid-gap: 20px;
+    align-items: center;
+
+    border-radius: 4px;
+    @include card-shadow;
+
+    .to-do-delete {
+      color: red;
+      width: 13px;
+      height: 13px;
+      font-size: 10px;
+      text-align: center;
+      line-height: 13px;
+      border-radius: 2px;
+      box-sizing: border-box;
+      @include card-shadow;
+    }
+
+    .to-do-delete:hover {
+      color: white;
+      background-color: red;
+      cursor: default;
+    }
   }
 }

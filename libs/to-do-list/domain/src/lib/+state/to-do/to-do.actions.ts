@@ -44,3 +44,18 @@ export const updateToDoFailure = createAction(
   '[ToDo] Update ToDo Failure',
   props<{ error: any }>()
 );
+
+export const deleteToDo = createAction(
+  '[ToDo] Delete ToDo',
+  props<{ id: number }>()
+);
+
+export const deleteToDoSuccess = createAction(
+  '[ToDo] Delete ToDo Success',
+  props<{ id: number, success: boolean }>()
+);
+
+export const deleteToDoFailure = createAction(
+  '[ToDo] Delete ToDo Failure',
+  props<{ error: any }>()
+);

@@ -55,6 +55,22 @@ export class ToDoEffects {
     )
   );
 
+  deleteToDo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ToDoActions.deleteToDo),
+      switchMap((action) =>
+        this.toDoDataService.delete(action.id).pipe(
+          map((toDo) =>
+            ToDoActions.deleteToDoSuccess({id: action.id, success: toDo})
+          ),
+          catchError((error) =>
+            of(ToDoActions.updateToDoFailure({error}))
+          )
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private toDoDataService: ToDoDataService

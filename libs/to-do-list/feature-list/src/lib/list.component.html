@@ -1,6 +1,8 @@
 <div class="to-do-list">
   <div *ngFor="let toDo of toDoList$ | async" class="to-do">
     <label for="todo-{{toDo.id}}" class="to-do-content">{{toDo.content}}</label>
-    <input type="checkbox" [checked]="toDo.done" id="todo-{{toDo.id}}" class="to-do-done" (change)="update(toDo.id, toDo.content, !toDo.done)">
+    <span class="to-do-delete" (click)="delete(toDo.id)">X</span>
+    <input type="checkbox" [checked]="toDo.done" id="todo-{{toDo.id}}" class="to-do-done"
+           (change)="update(toDo.id, toDo.content, !toDo.done)">
   </div>
 </div>

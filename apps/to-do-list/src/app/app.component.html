@@ -1,6 +1,8 @@
 <header>
-  <h1>Welcome to {{ title }}!</h1>
-  <button class="btn btn-default" (click)="loggedIn ? logoff() : login()">
+  <h1>
+    Welcome to {{ title }}<span *ngIf="getUserName()">,<br>{{getUserName()}}</span>!
+  </h1>
+  <button class="auth-button" (click)="loggedIn ? logoff() : login()">
     {{loggedIn ? 'logout' : 'login'}}
   </button>
 </header>
